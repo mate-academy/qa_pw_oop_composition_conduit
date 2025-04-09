@@ -15,14 +15,14 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
     });
 
     test(`Create an article with ${testNameEnding}`, async ({
-      homePage,
+      internalHomePage,
       createArticlePage,
       viewArticlePage,
       logger,
     }) => {
       const article = generateNewArticleData(logger, tagsNumber);
 
-      await homePage.clickNewArticleLink();
+      await internalHomePage.header.clickNewArticleLink();
 
       await createArticlePage.fillTitleField(article.title);
       await createArticlePage.fillDescriptionField(article.description);

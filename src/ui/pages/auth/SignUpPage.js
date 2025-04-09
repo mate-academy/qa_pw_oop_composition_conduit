@@ -1,24 +1,15 @@
-import { expect, testStep } from '../../../common/helpers/pw';
+import { expect } from '../../../common/helpers/pw';
+import { BasePage } from '../BasePage';
 
-export class SignUpPage {
+export class SignUpPage extends BasePage {
   constructor(page, userId = 0) {
-    this.page = page;
-    this.userId = userId;
+    super(page, userId);
+    this._url = '/user/register';
     this.usernameField = page.getByPlaceholder('Username');
     this.emailField = page.getByPlaceholder('Email');
     this.passwordField = page.getByPlaceholder('Password');
     this.signUpButton = page.getByRole('button', { name: 'Sign up' });
     this.errorMessage = page.getByRole('list').nth(1);
-  }
-
-  async step(title, stepToRun) {
-    return await testStep(title, stepToRun, this.userId);
-  }
-
-  async open() {
-    await this.step(`Open 'Sign Up' page`, async () => {
-      await this.page.goto('/user/register');
-    });
   }
 
   async fillUsernameField(username) {

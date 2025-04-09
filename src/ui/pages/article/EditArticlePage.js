@@ -1,14 +1,12 @@
-import { expect, testStep } from '../../../common/pwHelpers/pw';
+import { expect } from '../../../common/pwHelpers/pw';
+import { BasePage } from '../BasePage';
+import { InternalHeader } from '../../components/header/InternalHeader';
 
-export class EditArticlePage {
+export class EditArticlePage extends BasePage {
   constructor(page, userId = 0) {
-    this.page = page;
-    this.userId = userId;
+    super(page, userId);
+    this.header = new InternalHeader(this.page, userId);
     this.articleTitleHeader = page.getByRole('heading');
-  }
-
-  async step(title, stepToRun) {
-    return await testStep(title, stepToRun, this.userId);
   }
 
   async assertArticleTitle(title) {

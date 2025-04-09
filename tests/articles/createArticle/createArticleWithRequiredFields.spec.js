@@ -11,11 +11,11 @@ test.beforeEach(async ({ page, user, logger }) => {
 });
 
 test('Creat an article with required fields', async ({
-  homePage,
+  internalHomePage,
   createArticlePage,
   viewArticlePage,
 }) => {
-  await homePage.clickNewArticleLink();
+  await internalHomePage.header.clickNewArticleLink();
 
   await createArticlePage.fillTitleField(article.title);
   await createArticlePage.fillDescriptionField(article.description);

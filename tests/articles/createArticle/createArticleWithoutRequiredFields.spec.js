@@ -7,10 +7,10 @@ test.beforeEach(async ({ page, user }) => {
 });
 
 test('Creat an article without required fields', async ({
-  homePage,
+  internalHomePage,
   createArticlePage,
 }) => {
-  await homePage.clickNewArticleLink();
+  await internalHomePage.header.clickNewArticleLink();
 
   await createArticlePage.clickPublishArticleButton();
   await createArticlePage.assertErrorMessageContainsText(TITLE_CANNOT_BE_EMPTY);

@@ -1,8 +1,11 @@
-import { expect, testStep } from '../../../common/helpers/pw';
-export class CreateArticlePage {
+import { expect } from '../../../common/helpers/pw';
+import { BasePage } from '../BasePage';
+import { InternalHeader } from '../../components/header/InternalHeader';
+export class CreateArticlePage extends BasePage {
   constructor(page, userId = 0) {
-    this.page = page;
-    this.userId = userId;
+    super(page, userId);
+    this._url = '/editor';
+    this.header = new InternalHeader(this.page, userId);
     this.titleField = page.getByPlaceholder('Article Title');
     this.descriptionField = page.getByPlaceholder(`What's this article about?`);
     this.textField = page.getByPlaceholder('Write your article (in markdown)');
@@ -11,16 +14,6 @@ export class CreateArticlePage {
       name: 'Publish Article',
     });
     this.errorMessage = page.getByRole('list').nth(1);
-  }
-
-  async step(title, stepToRun) {
-    return await testStep(title, stepToRun, this.userId);
-  }
-
-  async open() {
-    await this.step(`Open 'Create article' page`, async () => {
-      await this.page.goto('/editor');
-    });
   }
 
   async fillTitleField(title) {

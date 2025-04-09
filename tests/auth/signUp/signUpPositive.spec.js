@@ -3,7 +3,7 @@ import { test } from '../../_fixtures/fixtures';
 test('Successful `Sign up` flow test', async ({
   user,
   signUpPage,
-  homePage,
+  internalHomePage,
 }) => {
   await signUpPage.open();
   await signUpPage.fillUsernameField(user.username);
@@ -11,5 +11,5 @@ test('Successful `Sign up` flow test', async ({
   await signUpPage.fillPasswordField(user.password);
   await signUpPage.clickSignUpButton();
 
-  await homePage.assertYourFeedTabIsVisible();
+  await internalHomePage.yourFeed.assertTabLinkVisible();
 });

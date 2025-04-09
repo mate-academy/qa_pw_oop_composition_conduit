@@ -1,9 +1,11 @@
-import { expect, testStep } from '../../../common/helpers/pw';
+import { expect } from '../../../common/helpers/pw';
+import { BasePage } from '../BasePage';
 
-export class ViewArticlePage {
+export class ViewArticlePage extends BasePage {
+  articleId;
+
   constructor(page, userId = 0) {
-    this.page = page;
-    this.userId = userId;
+    super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
   }
 
@@ -13,20 +15,6 @@ export class ViewArticlePage {
 
   tagListItem(tagName) {
     return this.page.getByRole('listitem').filter({ hasText: tagName });
-  }
-
-  async step(title, stepToRun) {
-    return await testStep(title, stepToRun, this.userId);
-  }
-
-  url() {
-    return this.page.url();
-  }
-
-  async open(url) {
-    await this.step(`Open 'View Article' page`, async () => {
-      await this.page.goto(url);
-    });
   }
 
   async assertArticleTitleIsVisible(title) {

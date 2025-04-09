@@ -1,5 +1,5 @@
 import { SignUpPage } from '../../pages/auth/SignUpPage';
-import { HomePage } from '../../pages/HomePage';
+import { InternalHomePage } from '../../pages/home/InternalHomePage';
 import { testStep } from '../../../common/helpers/pw';
 
 export async function signUpUser(page, user, userId = 0) {
@@ -7,12 +7,12 @@ export async function signUpUser(page, user, userId = 0) {
     `Sign up user`,
     async () => {
       const signUpPage = new SignUpPage(page, userId);
-      const homePage = new HomePage(page, userId);
+      const homePage = new InternalHomePage(page, userId);
 
       await signUpPage.open();
       await signUpPage.submitSignUpForm(user);
 
-      await homePage.assertYourFeedTabIsVisible();
+      await homePage.yourFeed.assertTabLinkVisible();
     },
     userId,
   );

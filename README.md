@@ -13,19 +13,19 @@
 In this task, you will get more practice creating reusable components and using OOP. 
 You will create components for the Conduit `ExternalHomePage`:
 
-![external home page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalHome.png). 
+![external home page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalHome.png) 
 
 and for the `InternalHomePage`:
 
-![internal home page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalHome.png). 
+![internal home page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalHome.png) 
 
 Also for the `ExternalViewArticlePage`:
 
-![external view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalViewArticlePage.png). 
+![external view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalViewArticlePage.png) 
 
 and the `InternalViewArticlePage`:
 
-![internal view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalViewArticlePage.png). 
+![internal view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalViewArticlePage.png) 
 
 
 ## Preparation

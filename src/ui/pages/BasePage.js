@@ -12,7 +12,7 @@ export class BasePage {
     return await testStep(title, stepToRun, this.userId);
   }
 
-  pageName() {
+  _pageName() {
     return this.constructor.name.replace('Page', '');
   }
 
@@ -25,7 +25,7 @@ export class BasePage {
   }
 
   async open(directUrl = undefined) {
-    await this.step(`Open ${this.pageName()} page`, async () => {
+    await this.step(`Open ${this._pageName()} page`, async () => {
       const url = directUrl ? directUrl : this.url();
       await this.page.goto(url);
     });
@@ -36,7 +36,7 @@ export class BasePage {
   }
 
   async assertOpened() {
-    await this.step(`Assert ${this.pageName()} page is opened`, async () => {
+    await this.step(`Assert ${this._pageName()} page is opened`, async () => {
       await this.page.waitForURL(this.url());
       await expect(this.page).toHaveURL(this.url());
     });

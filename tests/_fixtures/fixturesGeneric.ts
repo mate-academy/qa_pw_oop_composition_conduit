@@ -10,9 +10,10 @@ export const test = base.extend<{
   pages;
   user;
   users;
-  logger;
   infoTestLog;
   addAllureTestHierarchy;
+}, {
+  logger;
 }>({
   usersNumber: [1, { option: true }],
   contextsNumber: [1, { option: true }],

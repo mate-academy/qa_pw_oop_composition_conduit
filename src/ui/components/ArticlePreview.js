@@ -1,0 +1,15 @@
+import { BaseComponent } from "./BaseComponent";
+import { expect } from '../../common/helpers/pw';
+
+export class ArticlePreview extends BaseComponent {
+  constructor(page, userId = 0) {
+    super(page, userId);
+    this.articlePreview = page.locator('.article-preview');
+  }
+
+  async assertArticleIsVisible(articleTitle) {
+    await this.step(`Assert article with title '${articleTitle}' is visible`, async () => {
+      await expect(this.articlePreview.filter({hasText: articleTitle})).toBeVisible();
+    });
+  }
+}

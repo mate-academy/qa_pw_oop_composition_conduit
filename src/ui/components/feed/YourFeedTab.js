@@ -1,5 +1,5 @@
-import { BaseComponent } from './BaseComponent';
-import { expect } from '../../common/helpers/pw';
+import { BaseComponent } from '../BaseComponent';
+import { expect } from '../../../common/helpers/pw';
 
 export class YourFeedTab extends BaseComponent {
   #yourFeedLink;

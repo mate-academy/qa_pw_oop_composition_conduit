@@ -1,5 +1,5 @@
+import { GlobalFeedTab } from '../../components/feed/GlobalFeedTab';
 import { BasePage } from '../BasePage';
-import { GlobalFeedTab } from '../../components/GlobalFeedTab';
 
 export class BaseHomePage extends BasePage {
   constructor(page, userId = 0) {

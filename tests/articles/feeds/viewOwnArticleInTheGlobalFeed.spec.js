@@ -1,5 +1,4 @@
 import { test } from '../../_fixtures/fixtures';
-import { ViewArticlePage } from '../../../src/ui/pages/article/ViewArticlePage';
 import { createArticle } from '../../../src/ui/actions/articles/createArticle';
 import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
 import { InternalHomePage } from '../../../src/ui/pages/home/InternalHomePage';
@@ -11,13 +10,12 @@ test.beforeEach(async ({ page, user, articleWithoutTags }) => {
 
 test('View own article in the global feed tab', async ({
   articleWithoutTags,
-  page,
+  internalHomePage
 }) => {
-  const homePage = new InternalHomePage(page, 1);
 
-  await homePage.open()
-  await homePage.globalFeedTab.open();
-  await homePage.globalFeedTab.articlePreview.assertArticleIsVisible(
+  await internalHomePage.open()
+  await internalHomePage.globalFeedTab.open();
+  await internalHomePage.globalFeedTab.articleListItem.assertArticleIsVisible(
       articleWithoutTags.title
   );
 });

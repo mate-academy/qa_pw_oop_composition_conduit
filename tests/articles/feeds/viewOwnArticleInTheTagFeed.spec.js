@@ -10,14 +10,14 @@ test.beforeEach(async ({ page, user, articleWithOneTag }) => {
 
 test('View own article in the tag feed tab', async ({
   articleWithOneTag,
-  page,
+  internalHomePage,
 }) => {
-  const homePage = new InternalHomePage(page, 1);
-
-  await homePage.open();
-  await homePage.popularTags.clickTag(articleWithOneTag.tags[0]);
-  await homePage.tagFeed.assertVisible(articleWithOneTag.tags[0]);
-  await homePage.tagFeed.articlePreview.assertArticleIsVisible(articleWithOneTag.title)
+  await internalHomePage.open();
+  await internalHomePage.popularTags.clickTag(articleWithOneTag.tags[0]);
+  await internalHomePage.tagFeedTab.assertVisible(articleWithOneTag.tags[0]);
+  await internalHomePage.tagFeedTab.articleListItem.assertArticleIsVisible(
+    articleWithOneTag.title
+  )
 });
 
 test.afterEach(async ({ page}) => {

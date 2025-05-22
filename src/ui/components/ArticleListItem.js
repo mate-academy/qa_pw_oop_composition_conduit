@@ -1,7 +1,7 @@
 import { BaseComponent } from "./BaseComponent";
 import { expect } from '../../common/helpers/pw';
 
-export class ArticlePreview extends BaseComponent {
+export class ArticleListItem extends BaseComponent {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articlePreview = page.locator('.article-preview');

@@ -14,10 +14,10 @@ test('Not logged in user can view the article created by other user in the Globa
   articleWithoutTags,
   pages,
 }) => {
-  const homePage = new ExternalHomePage(pages[1], 2);
-  await homePage.open()
-  await homePage.globalFeedTab.open();
-  await homePage.globalFeedTab.articlePreview.assertArticleIsVisible(
+  const externalHomePage = new ExternalHomePage(pages[1], 2);
+  await externalHomePage.open()
+  await externalHomePage.globalFeedTab.open();
+  await externalHomePage.globalFeedTab.articleListItem.assertArticleIsVisible(
       articleWithoutTags.title
   );
 });

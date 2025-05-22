@@ -1,8 +1,8 @@
 import { test } from '../../_fixtures/fixtures';
-import { ViewArticlePage } from '../../../src/ui/pages/article/ViewArticlePage';
 import { createArticle } from '../../../src/ui/actions/articles/createArticle';
 import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
 import { ExternalHomePage } from '../../../src/ui/pages/home/ExternalHomePage';
+import { ExternalViewArticlePage } from '../../../src/ui/pages/article/ExternalViewArticlePage';
 
 test.use({ contextsNumber: 2, usersNumber: 2 });
 
@@ -15,14 +15,15 @@ test('Not logged in user can open the article page created by other user from th
   articleWithoutTags,
   pages,
 }) => {
-  const homePage = new ExternalHomePage(pages[1], 2);
-  const viewArticlePage = new ViewArticlePage(pages[1], 2);
-  await homePage.open()
-  await homePage.globalFeedTab.open();
-  await homePage.globalFeedTab.articlePreview.clickArticlePreview(
+  const externalHomePage = new ExternalHomePage(pages[1], 2);
+  const externalViewArticlePage = new ExternalViewArticlePage(pages[1], 2);
+  
+  await externalHomePage.open()
+  await externalHomePage.globalFeedTab.open();
+  await externalHomePage.globalFeedTab.articleListItem.clickArticlePreview(
     articleWithoutTags.title
   );
-  await viewArticlePage.assertArticleTitleIsVisible(
+  await externalViewArticlePage.assertArticleTitleIsVisible(
     articleWithoutTags.title
   );
 });

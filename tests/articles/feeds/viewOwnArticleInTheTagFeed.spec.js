@@ -8,7 +8,7 @@ test.beforeEach(async ({ page, user, articleWithOneTag }) => {
   await createArticle(page, articleWithOneTag, 1);
 });
 
-test.only('View own article in the tag feed tab', async ({
+test('View own article in the tag feed tab', async ({
   articleWithOneTag,
   page,
 }) => {

@@ -1,15 +1,20 @@
-import { BaseComponent } from './BaseComponent';
-import { expect } from '../../common/helpers/pw';
+import { BaseComponent } from '../BaseComponent';
+import { expect } from '../../../common/helpers/pw';
+import { ArticleFeedItem } from './ArticleFeedItem';
 
 export class GlobalFeedTab extends BaseComponent {
   #globalFeedLink;
+  articleFeedItem;
 
   constructor(page, userId = 0) {
     super(page, userId);
-    this.#globalFeedLink = this.page.getByText('Global Feed');
+    this.#globalFeedLink = this.page.locator('.nav-item', {
+      hasText: 'Global Feed',
+    });
+    this.articleFeedItem = new ArticleFeedItem(page);
   }
 
-  async open() {
+  async clickGlobalFeedTab() {
     await this.step(`Open 'Global Feed' tab`, async () => {
       await this.#globalFeedLink.click();
     });

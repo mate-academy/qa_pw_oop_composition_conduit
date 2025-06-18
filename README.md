@@ -21,11 +21,11 @@ and for the `InternalHomePage`:
 
 Also for the `ExternalViewArticlePage`:
 
-![external view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalViewArticlePage.png) 
+![external view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalViewArticlePage1.png) 
 
 and the `InternalViewArticlePage`:
 
-![internal view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalViewArticlePage.png) 
+![internal view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalViewArticlePage1.png) 
 
 
 ## Preparation
@@ -62,10 +62,10 @@ and the `InternalViewArticlePage`:
 - create page `BaseViewArticlePage`;
 - extend `ExternalViewArticlePage` and `InternalViewArticlePage` pages from the `BaseViewArticlePage`;
 * 2.5
-- create the `BaseViewArticleBlock` component;
-- extend the `ExternalViewArticleBlock` and `InternalViewArticleBlock` from the `BaseViewArticleBlock` component  
-- initialize `InternalViewArticleBlock` component within the `InternalViewArticlePage` constructor;
-- initialize `ExternalViewArticleBlock` component within the `ExternalViewArticlePage` constructor;
+- create the `BaseArticleContentBlock` component;
+- extend the `GeneralArticleContentBlock` and `AuthorArticleContentBlock` from the `BaseArticleBody` component  
+- initialize `GeneralArticleContentBlock` component within the `BaseViewArticlePage` constructor;
+- initialize `AuthorArticleContentBlock` component within the `InternalViewArticlePage` constructor;
 3. Run all the tests and make sure they are passing.
 
 ## Task Reporting

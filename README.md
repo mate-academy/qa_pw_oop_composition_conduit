@@ -21,11 +21,11 @@ and for the `InternalHomePage`:
 
 Also for the `ExternalViewArticlePage`:
 
-![external view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalViewArticlePage1.png) 
+![external view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/ExternalViewArticlePage.png) 
 
 and the `InternalViewArticlePage`:
 
-![internal view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalViewArticlePage1.png) 
+![internal view article page](https://github.com/mate-academy/qa_pw_oop_composition_conduit/blob/main/InternalViewArticlePage.png) 
 
 
 ## Preparation

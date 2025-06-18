@@ -1,7 +1,7 @@
-import { expect } from '../../../common/helpers/pw';
-import { BasePage } from '../BasePage';
+import { BasePage } from "../BasePage";
+import { expect } from "@playwright/test";
 
-export class ViewArticlePage extends BasePage {
+export class BaseViewArticlePage extends BasePage {
   articleId;
 
   constructor(page, userId = 0) {

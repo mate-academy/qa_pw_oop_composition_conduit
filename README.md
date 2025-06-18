@@ -52,12 +52,12 @@ and the `InternalViewArticlePage`:
 - initialize component  `PopularTags` in the `BaseHomePage` class;
 * 2.2 
 - create component `ArticleListItem`;
-- initialize the `ArticleFeedItem` in the `Popular Feeds` class;
-- initialize the `ArticleFeedItem` in the `Global Feeds` class;
+- initialize the `ArticleListItem` in the `Your Feeds` class;
+- initialize the `ArticleListItem` in the `Global Feeds` class;
 * 2.3
-- create component `TagFeed`;
-- initialize `TagFeed` in the `ExternalHomePage`;
-- initialize `TagFeed` in the `InternalHomePage`;
+- create component `TagFeedTab`;
+- initialize `TagFeedTab` in the `ExternalHomePage`;
+- initialize `TagFeedTab` in the `InternalHomePage`;
 * 2.4
 - create page `BaseViewArticlePage`;
 - extend `ExternalViewArticlePage` and `InternalViewArticlePage` pages from the `BaseViewArticlePage`;

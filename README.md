@@ -64,7 +64,7 @@ and the `InternalViewArticlePage`:
 * 2.5
 - create the `BaseArticleContentBlock` component;
 - extend the `ArticleContentBlock` and `AuthorsArticleContentBlock` from the `BaseArticleBody` component  
-- initialize `GeneralArticleContentBlock` component within the `BaseViewArticlePage` constructor;
+- initialize `ArticleContentBlock` component within the `BaseViewArticlePage` constructor;
 - initialize `AuthorArticleContentBlock` component within the `InternalViewArticlePage` constructor;
 3. Run all the tests and make sure they are passing.
 

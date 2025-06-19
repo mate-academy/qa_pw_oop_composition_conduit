@@ -1,3 +1,4 @@
+import { expect } from 'allure-playwright';
 import { BaseComponent } from '../BaseComponent';
 
 export class BaseHeader extends BaseComponent {
@@ -6,7 +7,9 @@ export class BaseHeader extends BaseComponent {
 
   constructor(page, userId = 0) {
     super(page, userId);
-    this.#conduitLogo = this.page.getByRole('link', { name: 'Conduit' });
+    this.#conduitLogo = this.page
+      .getByRole('link', { name: 'Conduit' })
+      .first();
     this.#homeLink = this.page.getByRole('link', { name: 'Home' });
   }
 
@@ -19,6 +22,15 @@ export class BaseHeader extends BaseComponent {
   async clickHomeLink() {
     await this.step(`Click 'Home' link in the page header`, async () => {
       await this.#homeLink.click();
+    });
+  }
+
+  async assertConduitLogoVisible() {
+    await this.step(`Assert 'Conduit' logo is visible`, async () => {
+      await expect(this.#conduitLogo).toBeVisible({
+        timeout: 1000,
+        message: `'Conduit' logo is not visible`,
+      });
     });
   }
 }

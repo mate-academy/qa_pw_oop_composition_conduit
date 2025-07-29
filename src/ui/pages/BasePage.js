@@ -12,6 +12,10 @@ export class BasePage {
     return await testStep(title, stepToRun, this.userId);
   }
 
+  async reload() {
+    await this.page.reload();
+  }
+
   _pageName() {
     return this.constructor.name.replace('Page', '');
   }

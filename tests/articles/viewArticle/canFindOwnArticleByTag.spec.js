@@ -31,7 +31,7 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
       await createArticlePage.clickPublishArticleButton();
       await baseHomePage.baseHeader.clickConduitLogo();
       await basePage.reload();
-      await baseHomePage.popularTags.clickTag(article.tags);
+      await baseHomePage.popularTags.clickTag(article.tags[0]);
       await externalViewArticlePage.articleContentExternal.assertArticleTitleIsVisible(article.title);
     });
   });

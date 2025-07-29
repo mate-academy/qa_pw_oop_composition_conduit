@@ -9,7 +9,7 @@ export class BaseHeader extends BaseComponent {
     super(page, userId);
     this.#conduitLogo = this.page.getByRole('link', { name: 'Conduit' }).first();
     this.#homeLink = this.page.getByRole('link', { name: 'Home' });
-    this.#settings = this.page.getByRole('link', { name: '  Settings' })
+    this.#settings = this.page.getByRole('link', { name: '  Settings' });
   }
 
   async clickConduitLogo() {

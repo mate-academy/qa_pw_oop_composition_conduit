@@ -49,15 +49,15 @@ and the `InternalViewArticlePage`:
 2. To write these tests work with the components and base pages:
 * 2.1 
 - create component `PopularTags`;
-- initialize component  `PopularTags` in the `BaseHomePage` class;
+- initialize component  `PopularTags` in the `src/ui/pages/home/BaseHomePage.js` class;
 * 2.2 
-- create component `ArticleListItem`;
-- initialize the `ArticleFeedItem` in the `Popular Feeds` class;
-- initialize the `ArticleFeedItem` in the `Global Feeds` class;
+- create component `ArticleFeedItem`;
+- initialize the `ArticleFeedItem` in the `src/ui/components/YourFeedTab.js` class;
+- initialize the `ArticleFeedItem` in the `src/ui/components/GlobalFeedTab.js` class;
 * 2.3
-- create component `TagFeed`;
-- initialize `TagFeed` in the `ExternalHomePage`;
-- initialize `TagFeed` in the `InternalHomePage`;
+- create component `TagFeedTab`;
+- initialize `TagFeedTab` in the `src/ui/pages/home/ExternalHomePage.js`;
+- initialize `TagFeedTab` in the `src/ui/pages/home/InternalHomePage.js`;
 * 2.4
 - create page `BaseViewArticlePage`;
 - extend `ExternalViewArticlePage` and `InternalViewArticlePage` pages from the `BaseViewArticlePage`;

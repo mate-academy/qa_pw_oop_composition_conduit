@@ -65,7 +65,7 @@ and the `InternalViewArticlePage`:
 - extend `ExternalViewArticlePage` and `InternalViewArticlePage` pages from the `BaseViewArticlePage`;
 * 2.5
 - create the `BaseArticleContentBlock` component;
-- extend the `ArticleContentBlock` and `AuthorsArticleContentBlock` from the `BaseArticleContentBlock` component  
+- create and extend the `ArticleContentBlock` and `AuthorsArticleContentBlock` from the `BaseArticleContentBlock` component;  
 - initialize `ArticleContentBlock` component within the `BaseViewArticlePage` constructor;
 - initialize `AuthorArticleContentBlock` component within the `InternalViewArticlePage` constructor;
 - move all the relevant methods from the `InternalViewArticlePage` to the `ArticleContentBlock` component. 

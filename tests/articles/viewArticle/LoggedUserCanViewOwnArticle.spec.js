@@ -43,6 +43,8 @@ test.describe(
         await internalHomePage
           .tagFeedTab
           .articleFeedItem
-          .assertArticleCreatedByAuthorIsVisible(user.username);
+          .assertArticleCreatedByAuthorIsVisibleOnTagSection(
+            user.username, articleTag
+          );
     });
 });

@@ -60,12 +60,15 @@ and the `InternalViewArticlePage`:
 - initialize `TagFeedTab` in the `src/ui/pages/home/InternalHomePage.js`;
 * 2.4
 - create page `BaseViewArticlePage`;
+- rename `ViewArticlePage` pages to `InternalViewArticlePage`;
+- create new class `ExternalViewArticlePage`;
 - extend `ExternalViewArticlePage` and `InternalViewArticlePage` pages from the `BaseViewArticlePage`;
 * 2.5
 - create the `BaseArticleContentBlock` component;
-- extend the `ArticleContentBlock` and `AuthorsArticleContentBlock` from the `BaseArticleBody` component  
+- extend the `ArticleContentBlock` and `AuthorsArticleContentBlock` from the `BaseArticleContentBlock` component  
 - initialize `ArticleContentBlock` component within the `BaseViewArticlePage` constructor;
 - initialize `AuthorArticleContentBlock` component within the `InternalViewArticlePage` constructor;
+- move all the relevant methods from the `InternalViewArticlePage` to the `ArticleContentBlock` component. 
 3. Run all the tests and make sure they are passing.
 
 ## Task Reporting

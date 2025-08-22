@@ -20,13 +20,8 @@ test('View an article created by another user', async ({
 
   await internalViewArticlePage.open(articleWithoutTags.url);
 
-  await internalViewArticlePage.assertArticleTitleIsVisible(
-    articleWithoutTags.title,
-  );
-  await internalViewArticlePage.assertArticleTextIsVisible(
-    articleWithoutTags.text,
-  );
-  await internalViewArticlePage.assertArticleAuthorNameIsVisible(
-    users[0].username,
-  );
+  const articleBlock = internalViewArticlePage.articleContentBlock;
+  await articleBlock.assertArticleTitleIsVisible(articleWithoutTags.title);
+  await articleBlock.assertArticleTextIsVisible(articleWithoutTags.text);
+  await articleBlock.assertArticleAuthorNameIsVisible(users[0].username);
 });

@@ -27,20 +27,11 @@ test('View an and open article created by another', async ({
   await articleItem.clickOnAuthorArticle(users[0].username);
 
   const internalViewArticlePage = new InternalViewArticlePage(pages[1], 2);
-  await internalViewArticlePage.assertArticleUrlIsCorrect(
-    articleWithOneTag.url,
-  );
+  const articleBlock = internalViewArticlePage.articleContentBlock;
 
-  await internalViewArticlePage.assertArticleTitleIsVisible(
-    articleWithOneTag.title,
-  );
-  await internalViewArticlePage.assertArticleTextIsVisible(
-    articleWithOneTag.text,
-  );
-  await internalViewArticlePage.assertArticleTagsAreVisible(
-    articleWithOneTag.tags,
-  );
-  await internalViewArticlePage.assertArticleAuthorNameIsVisible(
-    users[0].username,
-  );
+  await articleBlock.assertArticleUrlIsCorrect(articleWithOneTag.url);
+  await articleBlock.assertArticleTitleIsVisible(articleWithOneTag.title);
+  await articleBlock.assertArticleTextIsVisible(articleWithOneTag.text);
+  await articleBlock.assertArticleTagsAreVisible(articleWithOneTag.tags);
+  await articleBlock.assertArticleAuthorNameIsVisible(users[0].username);
 });

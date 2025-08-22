@@ -6,18 +6,24 @@ export class AuthorArticleContentBlock extends BaseArticleContentBlock {
     super(page, userId);
     this.container = page.locator('form.card.comment-form');
     this.commentField = this.container.locator('textarea.form-control');
-    this.submitButton = this.container.locator('button.btn-primary');
+    this.postCommentButton = page.getByRole('button', { name: /Post Comment/ });
+    this.editArticleButton = page
+      .getByRole('link', { name: /Edit Article/ })
+      .nth(1);
+    this.deleteArticleButton = page
+      .getByRole('link', { name: /Delete Article/ })
+      .nth(1);
   }
 
   async fillComment(text) {
-    await this.step(`Add a comment'`, async () => {
+    await this.step(`Add a comment`, async () => {
       await this.commentField.fill(text);
     });
   }
 
-  async clickSubmitButton() {
-    await this.step(`Click 'Sign In' button from article page'`, async () => {
-      await this.submitButton.click();
+  async clickPostCommentButton() {
+    await this.step(`Click 'Post Comment' button`, async () => {
+      await this.postCommentButton.click();
     });
   }
 
@@ -32,7 +38,19 @@ export class AuthorArticleContentBlock extends BaseArticleContentBlock {
     await this.step(`Comment section is visible`, async () => {
       await expect(this.container).toBeVisible();
       await expect(this.commentField).toBeVisible();
-      await expect(this.submitButton).toBeVisible();
+      await expect(this.postCommentButton).toBeVisible();
+    });
+  }
+
+  async clickEditArticleButton() {
+    await this.step(`Click 'Edit Article' button`, async () => {
+      await this.editArticleButton.click();
+    });
+  }
+
+  async clickDeleteArticleButton() {
+    await this.step(`Click 'Edit Article' button`, async () => {
+      await this.deleteArticleButton.click();
     });
   }
 }

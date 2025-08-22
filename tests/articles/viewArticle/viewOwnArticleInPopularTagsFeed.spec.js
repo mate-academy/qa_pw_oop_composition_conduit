@@ -25,6 +25,8 @@ test('Logged-in user can find own article by Tag', async ({
 
   await internalHomePage.popularTags.clickTag(article.tags[0]);
 
+  await internalHomePage.tagFeedTab.assertTagTabIsSelected(article.tags[0]);
+
   const articleItem = internalHomePage.globalFeed.articleFeedItem;
 
   await articleItem.assertArticleTitleContainsText(

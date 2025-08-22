@@ -22,6 +22,7 @@ test('Creat an article with required fields', async ({
   await createArticlePage.fillTextField(article.text);
   await createArticlePage.clickPublishArticleButton();
 
-  await internalViewArticlePage.assertArticleTitleIsVisible(article.title);
-  await internalViewArticlePage.assertArticleTextIsVisible(article.text);
+  const articleBlock = internalViewArticlePage.articleContentBlock;
+  await articleBlock.assertArticleTitleIsVisible(article.title);
+  await articleBlock.assertArticleTextIsVisible(article.text);
 });

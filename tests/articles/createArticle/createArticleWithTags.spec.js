@@ -17,7 +17,7 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
     test(`Create an article with ${testNameEnding}`, async ({
       internalHomePage,
       createArticlePage,
-      viewArticlePage,
+      internalViewArticlePage,
       logger,
     }) => {
       const article = generateNewArticleData(logger, tagsNumber);
@@ -30,9 +30,10 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
       await createArticlePage.fillTagsField(article.tags);
       await createArticlePage.clickPublishArticleButton();
 
-      await viewArticlePage.assertArticleTitleIsVisible(article.title);
-      await viewArticlePage.assertArticleTextIsVisible(article.text);
-      await viewArticlePage.assertArticleTagsAreVisible(article.tags);
+      const articleBlock = internalViewArticlePage.articleContentBlock;
+      await articleBlock.assertArticleTitleIsVisible(article.title);
+      await articleBlock.assertArticleTextIsVisible(article.text);
+      await articleBlock.assertArticleTagsAreVisible(article.tags);
     });
   });
 });

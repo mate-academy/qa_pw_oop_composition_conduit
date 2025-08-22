@@ -49,7 +49,7 @@ export class AuthorArticleContentBlock extends BaseArticleContentBlock {
   }
 
   async clickDeleteArticleButton() {
-    await this.step(`Click 'Edit Article' button`, async () => {
+    await this.step(`Click 'Delete Article' button`, async () => {
       await this.deleteArticleButton.click();
     });
   }

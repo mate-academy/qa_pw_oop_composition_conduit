@@ -1,12 +1,13 @@
 import { expect } from '../../../common/helpers/pw';
 import { BasePage } from '../BasePage';
 
-export class ViewArticlePage extends BasePage {
+export class BaseViewArticlePage extends BasePage {
   articleId;
 
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
+    this._url = '/article/';
   }
 
   authorLinkInArticleHeader(username) {

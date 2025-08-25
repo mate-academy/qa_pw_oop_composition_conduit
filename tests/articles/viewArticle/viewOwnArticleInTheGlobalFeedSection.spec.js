@@ -10,10 +10,11 @@ test.beforeEach(async ({ page, user, logger }) => {
   await signUpUser(page, user);
 });
 
-test('Creat an article with required fields', async ({
+test('user can view own article in the Global Feed section', async ({
   internalHomePage,
   createArticlePage,
-  externalViewArticlePage,
+  baseHomePage,
+  externalViewArticlePage
 }) => {
   await internalHomePage.header.clickNewArticleLink();
 
@@ -22,6 +23,9 @@ test('Creat an article with required fields', async ({
   await createArticlePage.fillTextField(article.text);
   await createArticlePage.clickPublishArticleButton();
 
+  await baseHomePage.baseHeader.clickConduitLogo();
+  await baseHomePage.globalFeed.open();
+  await baseHomePage.globalFeed.openArticleFromGlobalFeed(article.title);
   await externalViewArticlePage.articleContentExternal.assertArticleTitleIsVisible(article.title);
   await externalViewArticlePage.articleContentExternal.assertArticleTextIsVisible(article.text);
 });

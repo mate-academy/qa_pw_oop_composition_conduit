@@ -2,12 +2,16 @@ import { test as base } from '@playwright/test';
 import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 import { CreateArticlePage } from '../../src/ui/pages/article/CreateArticlePage';
 import { ViewArticlePage } from '../../src/ui/pages/article/ViewArticlePage';
+import { ExternalViewArticlePage } from '../../src/ui/pages/article/viewArticle/ExternalViewArticlePage';
+import { InternalHomePage } from '../../src/ui/pages/home/InternalHomePage';
 
 export const test = base.extend<{
   articleWithoutTags;
   articleWithOneTag;
   createArticlePage;
   viewArticlePage;
+  externalViewArticlePage;
+  internalHomePage;
 }>({
   articleWithoutTags: async ({ logger }, use) => {
     const article = generateNewArticleData(logger);
@@ -29,4 +33,14 @@ export const test = base.extend<{
 
     await use(viewArticlePage);
   },
+  externalViewArticlePage: async ({ page }, use) => {
+    const externalViewArticlePage = new ExternalViewArticlePage(page);
+
+    await use(externalViewArticlePage);
+  },
+  internalHomePage: async ({ page }, use) => {
+    const internalHomePage = new InternalHomePage(page);
+
+    await use(internalHomePage);
+  }
 });

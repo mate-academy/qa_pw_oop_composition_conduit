@@ -1,7 +1,8 @@
 import { test } from '../../_fixtures/fixtures';
-import { ViewArticlePage } from '../../../src/ui/pages/article/ViewArticlePage';
+import { BaseHomePage } from '../../../src/ui/pages/home/BaseHomePage';
 import { createArticle } from '../../../src/ui/actions/articles/createArticle';
 import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
+import { InternalHomePage } from '../../../src/ui/pages/home/InternalHomePage';
 
 test.use({ contextsNumber: 2, usersNumber: 2 });
 
@@ -11,13 +12,17 @@ test.beforeEach(async ({ pages, users, articleWithoutTags }) => {
   await createArticle(pages[0], articleWithoutTags, 1);
 });
 
-test('View an article created by another user', async ({
+test('Not logged in user can open the article page created by other user from the Global Feed section', async ({
   articleWithoutTags,
   pages,
   users,
+  viewArticlePage
 }) => {
-  const viewArticlePage = new ViewArticlePage(pages[1], 2);
+  const homePage = new BaseHomePage(pages[1], 2);
+  const internalHomePage = new InternalHomePage(pages[1], 2);
 
+  await homePage.baseHeader.clickSettingsLink();
+  await internalHomePage.clickLogOutLink();
   await viewArticlePage.open(articleWithoutTags.url);
 
   await viewArticlePage.articleContentExternal.assertArticleTitleIsVisible(articleWithoutTags.title);

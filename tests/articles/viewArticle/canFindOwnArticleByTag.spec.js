@@ -4,12 +4,10 @@ import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
 
 const testParameters = [
   { tagsNumber: 1, testNameEnding: 'one tag' },
-  { tagsNumber: 2, testNameEnding: 'two tags' },
-  { tagsNumber: 10, testNameEnding: 'ten tags' },
 ];
 
 testParameters.forEach(({ tagsNumber, testNameEnding }) => {
-  test.describe('Create an article with tags', () => {
+  test.describe('can find own article by Tag from the Popular tags section', () => {
     test.beforeEach(async ({ page, user }) => {
       await signUpUser(page, user);
     });
@@ -19,6 +17,8 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
       createArticlePage,
       externalViewArticlePage,
       logger,
+      baseHomePage,
+      basePage
     }) => {
       const article = generateNewArticleData(logger, tagsNumber);
 
@@ -29,10 +29,10 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
       await createArticlePage.fillTextField(article.text);
       await createArticlePage.fillTagsField(article.tags);
       await createArticlePage.clickPublishArticleButton();
-
+      await baseHomePage.baseHeader.clickConduitLogo();
+      await basePage.reload();
+      await baseHomePage.popularTags.clickTag(article.tags[0]);
       await externalViewArticlePage.articleContentExternal.assertArticleTitleIsVisible(article.title);
-      await externalViewArticlePage.articleContentExternal.assertArticleTextIsVisible(article.text);
-      await externalViewArticlePage.articleContentExternal.assertArticleTagsAreVisible(article.tags);
     });
   });
 });

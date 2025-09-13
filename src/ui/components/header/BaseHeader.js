@@ -6,7 +6,7 @@ export class BaseHeader extends BaseComponent {
 
   constructor(page, userId = 0) {
     super(page, userId);
-    this.#conduitLogo = this.page.getByRole('link', { name: 'Conduit' });
+    this.#conduitLogo = this.page.locator('.navbar-brand');
     this.#homeLink = this.page.getByRole('link', { name: 'Home' });
   }
 

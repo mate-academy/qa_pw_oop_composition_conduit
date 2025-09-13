@@ -11,13 +11,13 @@ const testParameters = [
 testParameters.forEach(({ tagsNumber, testNameEnding }) => {
   test.describe('Create an article with tags', () => {
     test.beforeEach(async ({ page, user }) => {
-      await signUpUser(page, user);
+      await signUpUser(page, user, 1);
     });
 
     test(`Create an article with ${testNameEnding}`, async ({
       internalHomePage,
       createArticlePage,
-      viewArticlePage,
+      internalViewArticlePage,
       logger,
     }) => {
       const article = generateNewArticleData(logger, tagsNumber);
@@ -30,9 +30,9 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
       await createArticlePage.fillTagsField(article.tags);
       await createArticlePage.clickPublishArticleButton();
 
-      await viewArticlePage.assertArticleTitleIsVisible(article.title);
-      await viewArticlePage.assertArticleTextIsVisible(article.text);
-      await viewArticlePage.assertArticleTagsAreVisible(article.tags);
+      await internalViewArticlePage.article.assertTitleIsVisible(article.title);
+      await internalViewArticlePage.article.assertTextIsVisible(article.text);
+      await internalViewArticlePage.article.assertArticleTagsAreVisible(article.tags);
     });
   });
 });

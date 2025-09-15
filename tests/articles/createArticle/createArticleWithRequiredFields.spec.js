@@ -6,14 +6,13 @@ let article;
 
 test.beforeEach(async ({ page, user, logger }) => {
   article = generateNewArticleData(logger);
-
-  await signUpUser(page, user);
+  await signUpUser(page, user, 1);
 });
 
-test('Creat an article with required fields', async ({
+test('Create an article with required fields', async ({
   internalHomePage,
   createArticlePage,
-  viewArticlePage,
+  internalViewArticlePage,
 }) => {
   await internalHomePage.header.clickNewArticleLink();
 
@@ -22,6 +21,6 @@ test('Creat an article with required fields', async ({
   await createArticlePage.fillTextField(article.text);
   await createArticlePage.clickPublishArticleButton();
 
-  await viewArticlePage.assertArticleTitleIsVisible(article.title);
-  await viewArticlePage.assertArticleTextIsVisible(article.text);
+  await internalViewArticlePage.article.assertTitleIsVisible(article.title);
+  await internalViewArticlePage.article.assertTextIsVisible(article.text);
 });

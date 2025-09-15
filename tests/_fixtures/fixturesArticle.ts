@@ -1,32 +1,33 @@
 import { test as base } from '@playwright/test';
 import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 import { CreateArticlePage } from '../../src/ui/pages/article/CreateArticlePage';
-import { ViewArticlePage } from '../../src/ui/pages/article/ViewArticlePage';
+import { InternalViewArticlePage } from '../../src/ui/pages/article/InternalViewArticlePage';
+import { ExternalViewArticlePage } from '../../src/ui/pages/article/ExternalViewArticlePage';
 
 export const test = base.extend<{
   articleWithoutTags;
   articleWithOneTag;
   createArticlePage;
-  viewArticlePage;
+  internalViewArticlePage;
+  externalViewArticlePage;
 }>({
   articleWithoutTags: async ({ logger }, use) => {
-    const article = generateNewArticleData(logger);
-
-    await use(article);
+    await use(generateNewArticleData(logger));
   },
+
   articleWithOneTag: async ({ logger }, use) => {
-    const article = generateNewArticleData(logger, 1);
-
-    await use(article);
+    await use(generateNewArticleData(logger, 1));
   },
+
   createArticlePage: async ({ page }, use) => {
-    const createArticlePage = new CreateArticlePage(page);
-
-    await use(createArticlePage);
+    await use(new CreateArticlePage(page));
   },
-  viewArticlePage: async ({ page }, use) => {
-    const viewArticlePage = new ViewArticlePage(page);
 
-    await use(viewArticlePage);
+  internalViewArticlePage: async ({ page }, use) => {
+    await use(new InternalViewArticlePage(page));
+  },
+
+  externalViewArticlePage: async ({ page }, use) => {
+    await use(new ExternalViewArticlePage(page));
   },
 });

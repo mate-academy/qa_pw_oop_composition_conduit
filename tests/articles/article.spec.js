@@ -12,7 +12,7 @@ test.describe('Home Page - Not Logged-in User', () => {
     const article =
       await homePage.globalFeed.getArticleByTitle('Other Article');
 
-    await expect(await article.isVisible()).toBeTruthy();
+    await article.assertVisible();
   });
 
   test('can open article page from Global Feed', async ({ page }) => {

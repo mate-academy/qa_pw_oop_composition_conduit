@@ -1,31 +1,21 @@
-export class ArticleFeedItem {
-  constructor(articleLocator) {
-    this.article = articleLocator;
+import { BaseComponent } from './BaseComponent';
+import { expect } from '../../common/helpers/pw';
 
-    this.title = this.article.locator('h1');
-    this.description = this.article.locator('.preview-link p');
-    this.author = this.article.locator('.author');
-    this.tags = this.article.locator('.tag-list li');
-    this.previewLink = this.article.locator('.preview-link');
-  }
-
-  async getTitle() {
-    return await this.title.textContent();
-  }
-
-  async getDescription() {
-    return await this.description.textContent();
-  }
-
-  async getAuthor() {
-    return await this.author.textContent();
-  }
-
-  async getTags() {
-    return await this.tags.allTextContents();
+export class ArticleFeedItem extends BaseComponent {
+  constructor(page, articleLocator) {
+    super(page);
+    this.article = articleLocator; // root locator komponentu
   }
 
   async open() {
-    await this.previewLink.click();
+    await this.article.click();
+  }
+
+  async assertVisible() {
+    await expect(this.article).toBeVisible();
+  }
+
+  async getTitle() {
+    return await this.article.textContent();
   }
 }

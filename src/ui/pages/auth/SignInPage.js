@@ -1,5 +1,6 @@
 import { expect } from '../../../common/helpers/pw';
 import { BasePage } from '../BasePage';
+
 export class SignInPage extends BasePage {
   constructor(page, userId = 0) {
     super(page, userId);

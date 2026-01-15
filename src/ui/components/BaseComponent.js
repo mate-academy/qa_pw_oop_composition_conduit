@@ -9,4 +9,10 @@ export class BaseComponent {
   async step(title, stepToRun) {
     return await testStep(title, stepToRun, this.userId);
   }
+
+  async expectLoaded(locator) {
+    await this.step(`Expect ${locator} to be loaded`, async () => {
+      await locator.waitFor({ state: 'visible' });
+    });
+  }
 }

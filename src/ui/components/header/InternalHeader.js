@@ -8,6 +8,7 @@ export class InternalHeader extends BaseHeader {
     super(page, userId);
     this.#newArticleLink = this.page.getByRole('link', { name: 'New Article' });
     this.#settingsLink = this.page.getByRole('link', { name: 'Sign in' });
+    this.homeLink = this.page.getByRole('link', { name: 'Home' });
   }
 
   #profileLink(profileId) {
@@ -29,6 +30,12 @@ export class InternalHeader extends BaseHeader {
   async clickUserProfileLink(profileId) {
     await this.step(`Click user profile link`, async () => {
       await this.#profileLink(profileId).click();
+    });
+  }
+
+  async clickHomeLink() {
+    await this.step(`Click 'Home' link`, async () => {
+      await this.homeLink.click();
     });
   }
 }

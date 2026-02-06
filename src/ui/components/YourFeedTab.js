@@ -1,5 +1,5 @@
 import { BaseComponent } from './BaseComponent';
-import { expect } from '../../common/helpers/pw';
+import { expect } from '@playwright/test';
 import { ArticleFeedItem } from './ArticleFeedItem';
 
 export class YourFeedTab extends BaseComponent {

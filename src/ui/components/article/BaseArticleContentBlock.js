@@ -1,5 +1,5 @@
 import { BaseComponent } from '../BaseComponent';
-import { expect } from '../../../common/helpers/pw';
+import { expect } from '@playwright/test';
 
 export class BaseArticleContentBlock extends BaseComponent {
   constructor(page, userId = 0) {

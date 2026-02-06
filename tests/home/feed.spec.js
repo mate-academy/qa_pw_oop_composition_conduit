@@ -44,27 +44,9 @@ test.describe('Home feed', () => {
       await signUpUser(pages[0], users[0], 1);
       await createArticle(pages[0], articleWithoutTags, 1);
 
-      await pages[1].waitForTimeout(2000);
       const externalHomePage = new ExternalHomePage(pages[1], 2);
       await externalHomePage.open();
       await externalHomePage.globalFeed.open();
-      const articleLink = pages[1]
-        .getByRole('link')
-        .filter({
-          has: pages[1]
-            .getByRole('heading')
-            .filter({ hasText: articleWithoutTags.title }),
-        })
-        .first();
-      const foundInFeed = await articleLink.isVisible().catch(() => false);
-      // eslint-disable-next-line playwright/no-conditional-in-test
-      if (!foundInFeed) {
-        await pages[1].goto(articleWithoutTags.url);
-        const viewArticlePage = new ExternalViewArticlePage(pages[1], 2);
-        await viewArticlePage.articleContentBlock
-          .assertArticleTitleIsVisible(articleWithoutTags.title);
-        return;
-      }
       await externalHomePage.globalFeed.articleFeedItem
         .assertArticleVisibleInFeed(articleWithoutTags.title);
     });
@@ -75,25 +57,12 @@ test.describe('Home feed', () => {
       await signUpUser(pages[0], users[0], 1);
       await createArticle(pages[0], articleWithoutTags, 1);
 
-      await pages[1].waitForTimeout(2000);
       const externalHomePage = new ExternalHomePage(pages[1], 2);
       await externalHomePage.open();
       await externalHomePage.globalFeed.open();
-      const articleLink = pages[1]
-        .getByRole('link')
-        .filter({
-          has: pages[1]
-            .getByRole('heading')
-            .filter({ hasText: articleWithoutTags.title }),
-        })
-        .first();
-      const foundInFeed = await articleLink.isVisible().catch(() => false);
-      // eslint-disable-next-line playwright/no-conditional-in-test
-      if (foundInFeed) {
-        await articleLink.click();
-      } else {
-        await pages[1].goto(articleWithoutTags.url);
-      }
+      await externalHomePage.globalFeed.articleFeedItem.openArticle(
+        articleWithoutTags.title,
+      );
 
       const viewArticlePage = new ExternalViewArticlePage(pages[1], 2);
       await viewArticlePage.articleContentBlock

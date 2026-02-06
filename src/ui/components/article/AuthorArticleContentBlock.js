@@ -1,3 +1,3 @@
-import { BaseArticleContentBlock } from './BaseArticleContentBlock';
+import { ArticleContentBlock } from './ArticleContentBlock';
 
-export class AuthorArticleContentBlock extends BaseArticleContentBlock {}
+export class AuthorArticleContentBlock extends ArticleContentBlock {}

@@ -11,7 +11,15 @@ export function parseTestTreeHierarchy(fileName, logger) {
     capitalize(camelCaseToPhrase(attribute)),
   );
 
-  if (attributes[2].includes('.spec.js')) {
+  if (attributes.length > 0) {
+    const last = attributes[attributes.length - 1];
+    if (last.includes('.spec.js') || last.includes('.spec.ts')) {
+      attributes[attributes.length - 1] = capitalize(
+        camelCaseToPhrase(last.replace(/\.spec\.(js|ts)$/i, '')),
+      );
+    }
+  }
+  if (attributes.length > 2) {
     attributes = attributes.slice(0, 2);
   }
 

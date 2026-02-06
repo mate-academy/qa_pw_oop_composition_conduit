@@ -4,7 +4,7 @@ import { AuthorArticleContentBlock } from '../../components/article/AuthorArticl
 export class InternalViewArticlePage extends BaseViewArticlePage {
   constructor(page, userId = 0) {
     super(page, userId);
-    this.authorArticleContentBlock = new AuthorArticleContentBlock(
+    this.articleContentBlock = new AuthorArticleContentBlock(
       this.page,
       userId,
     );

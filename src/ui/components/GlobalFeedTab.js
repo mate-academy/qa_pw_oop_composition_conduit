@@ -1,4 +1,5 @@
 import { BaseComponent } from './BaseComponent';
+import { ArticleFeedItem } from './ArticleFeedItem';
 import { expect } from '../../common/helpers/pw';
 
 export class GlobalFeedTab extends BaseComponent {
@@ -6,6 +7,7 @@ export class GlobalFeedTab extends BaseComponent {
 
   constructor(page, userId = 0) {
     super(page, userId);
+    this.articleFeedItem = new ArticleFeedItem(this.page, userId);
     this.#globalFeedLink = this.page.getByText('Global Feed');
   }
 
@@ -19,5 +21,18 @@ export class GlobalFeedTab extends BaseComponent {
     await this.step(`Assert 'Global Feed' link is visible`, async () => {
       await expect(this.#globalFeedLink).toBeVisible();
     });
+  }
+
+  async assertArticleVisible(articleTitle, articleCreator) {
+    await this
+      .articleFeedItem
+      .assertArticleTitleIsVisible(
+        articleTitle
+      );
+    await this
+      .articleFeedItem
+      .assertArticleAuthorIsVisible(
+        articleTitle,
+        articleCreator);
   }
 }

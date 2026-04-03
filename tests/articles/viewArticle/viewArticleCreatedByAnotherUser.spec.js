@@ -1,5 +1,5 @@
 import { test } from '../../_fixtures/fixtures';
-import { ViewArticlePage } from '../../../src/ui/pages/article/ViewArticlePage';
+import { ExternalViewArticlePage } from '../../../src/ui/pages/article/ExternalViewArticlePage';
 import { createArticle } from '../../../src/ui/actions/articles/createArticle';
 import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
 
@@ -16,11 +16,14 @@ test('View an article created by another user', async ({
   pages,
   users,
 }) => {
-  const viewArticlePage = new ViewArticlePage(pages[1], 2);
+  const viewArticlePage = new ExternalViewArticlePage(pages[1], 2);
 
   await viewArticlePage.open(articleWithoutTags.url);
 
-  await viewArticlePage.assertArticleTitleIsVisible(articleWithoutTags.title);
-  await viewArticlePage.assertArticleTextIsVisible(articleWithoutTags.text);
-  await viewArticlePage.assertArticleAuthorNameIsVisible(users[0].username);
+  await viewArticlePage
+    .articleContent.assertArticleTitleIsVisible(articleWithoutTags.title);
+  await viewArticlePage
+    .articleContent.assertArticleTextIsVisible(articleWithoutTags.text);
+  await viewArticlePage
+    .articleContent.assertArticleAuthorNameIsVisible(users[0].username);
 });

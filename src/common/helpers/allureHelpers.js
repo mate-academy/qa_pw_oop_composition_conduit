@@ -4,7 +4,8 @@ export function parseTestTreeHierarchy(fileName, logger) {
   const testFolder = 'tests/';
 
   const attributesCamelCase = fileName
-    .substring(fileName.indexOf(testFolder) + testFolder.length)
+    .replaceAll('\\', '/')
+    .substring(fileName.replaceAll('\\', '/').indexOf(testFolder) + testFolder.length)
     .split('/');
 
   let attributes = attributesCamelCase.map(attribute =>

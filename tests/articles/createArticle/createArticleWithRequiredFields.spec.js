@@ -10,7 +10,7 @@ test.beforeEach(async ({ page, user, logger }) => {
   await signUpUser(page, user);
 });
 
-test('Creat an article with required fields', async ({
+test('Create an article with required fields', async ({
   internalHomePage,
   createArticlePage,
   viewArticlePage,
@@ -22,6 +22,10 @@ test('Creat an article with required fields', async ({
   await createArticlePage.fillTextField(article.text);
   await createArticlePage.clickPublishArticleButton();
 
-  await viewArticlePage.assertArticleTitleIsVisible(article.title);
-  await viewArticlePage.assertArticleTextIsVisible(article.text);
+  await viewArticlePage
+    .articleContentBlock
+    .assertArticleTitleIsVisible(article.title);
+  await viewArticlePage
+    .articleContentBlock
+    .assertArticleTextIsVisible(article.text);
 });

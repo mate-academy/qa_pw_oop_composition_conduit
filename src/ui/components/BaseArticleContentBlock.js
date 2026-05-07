@@ -1,7 +1,7 @@
-import { expect } from '../../../common/helpers/pw';
-import { BasePage } from '../BasePage';
+import { expect } from '../../common/helpers/pw';
+import { BaseComponent } from './BaseComponent';
 
-export class ViewArticlePage extends BasePage {
+export class BaseArticleContentBlock extends BaseComponent {
   articleId;
 
   constructor(page, userId = 0) {

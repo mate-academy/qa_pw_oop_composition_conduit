@@ -1,11 +1,13 @@
-import { BaseComponent } from './BaseComponent';
-import { expect } from '../../common/helpers/pw';
+import { BaseComponent } from '../BaseComponent';
+import { ArticleFeedItem } from './ArticleFeedItem';
+import { expect } from '../../../common/helpers/pw';
 
 export class GlobalFeedTab extends BaseComponent {
   #globalFeedLink;
 
   constructor(page, userId = 0) {
     super(page, userId);
+    this.articleFeedItem = new ArticleFeedItem(this.page, userId);
     this.#globalFeedLink = this.page.getByText('Global Feed');
   }
 

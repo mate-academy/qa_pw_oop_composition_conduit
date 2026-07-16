@@ -7,7 +7,7 @@ export class AuthorsArticleContentBlock extends BaseArticleContentBlock {
   }
 
   authorLinkInArticleHeader(username) {
-    return this.page.getByRole('link', { username }).first();
+    return this.page.getByRole('link', { name: username }).first();
   }
 
   async assertArticleAuthorNameIsVisible(username) {

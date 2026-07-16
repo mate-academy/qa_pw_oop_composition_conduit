@@ -24,6 +24,12 @@ export class BasePage {
     }
   }
 
+  async reload() {
+    await this.step(`Reload ${this._pageName()} page`, async () => {
+      await this.page.reload();
+    })
+  }
+
   async open(directUrl = undefined) {
     await this.step(`Open ${this._pageName()} page`, async () => {
       const url = directUrl ? directUrl : this.url();

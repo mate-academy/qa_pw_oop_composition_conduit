@@ -1,14 +1,11 @@
-import { expect } from 'playwright/test';
+import { expect } from
+    'playwright/test';
 import { BaseArticleContentBlock } from './BaseArticleContentBlock';
 
 export class ArticleContentBlock extends BaseArticleContentBlock {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
-  }
-
-  authorLinkInArticleHeader(username) {
-    return this.page.getByRole('link', { username }).first();
   }
 
   tagListItem(tagName) {
@@ -19,15 +16,6 @@ export class ArticleContentBlock extends BaseArticleContentBlock {
     await this.step(`Assert the article has correct title`, async () => {
       await expect(this.articleTitleHeader).toContainText(title);
     });
-  }
-
-  async assertArticleAuthorNameIsVisible(username) {
-    await this.step(
-      `Assert the article has correct author username`,
-      async () => {
-        await expect(this.authorLinkInArticleHeader(username)).toBeVisible();
-      },
-    );
   }
 
   async assertArticleTextIsVisible(text) {

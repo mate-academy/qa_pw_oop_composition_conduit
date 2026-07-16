@@ -13,6 +13,6 @@ export class BaseHomePage extends BasePage {
   async clickGlobalFeedTab() {
     await this.step('Click on the Global Feed tab', async () => {
       await this.globalFeed.open();
-    })
+    });
   }
 }

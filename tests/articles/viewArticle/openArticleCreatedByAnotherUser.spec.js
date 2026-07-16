@@ -21,7 +21,7 @@ test('Open an article created by another user', async ({
   await internalHomePage.globalFeed.articleFeedItem.clickArticle(
     articleWithoutTags.title,
   );
-  await externalViewArticlePage.assertArticleTitleIsVisible(
+  await externalViewArticlePage.articleContentBlock.assertArticleTitleIsVisible(
     articleWithoutTags.title,
   );
 });

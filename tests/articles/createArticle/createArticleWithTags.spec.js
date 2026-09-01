@@ -1,6 +1,8 @@
 import { test } from '../../_fixtures/fixtures';
 import { generateNewArticleData } from '../../../src/common/testData/generateNewArticleData';
 import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
+import { InternalHomePage } from '../../../src/ui/pages/home/InternalHomePage';
+import { InternalViewArticlePage } from '../../../src/ui/pages/article/InternalViewArticlePage';
 
 const testParameters = [
   { tagsNumber: 1, testNameEnding: 'one tag' },
@@ -15,11 +17,12 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
     });
 
     test(`Create an article with ${testNameEnding}`, async ({
-      internalHomePage,
+      page,
       createArticlePage,
-      viewArticlePage,
       logger,
     }) => {
+      const internalViewArticlePage = new InternalViewArticlePage(page, 1);
+      const internalHomePage = new InternalHomePage(page, 1);
       const article = generateNewArticleData(logger, tagsNumber);
 
       await internalHomePage.header.clickNewArticleLink();
@@ -30,9 +33,15 @@ testParameters.forEach(({ tagsNumber, testNameEnding }) => {
       await createArticlePage.fillTagsField(article.tags);
       await createArticlePage.clickPublishArticleButton();
 
-      await viewArticlePage.assertArticleTitleIsVisible(article.title);
-      await viewArticlePage.assertArticleTextIsVisible(article.text);
-      await viewArticlePage.assertArticleTagsAreVisible(article.tags);
+      await internalViewArticlePage.articleContentBlock.assertArticleTitleIsVisible(
+        article.title,
+      );
+      await internalViewArticlePage.articleContentBlock.assertArticleTextIsVisible(
+        article.text,
+      );
+      await internalViewArticlePage.articleContentBlock.assertArticleTagsAreVisible(
+        article.tags,
+      );
     });
   });
 });

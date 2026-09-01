@@ -1,20 +1,20 @@
-import { expect } from '../../../common/helpers/pw';
-import { BasePage } from '../BasePage';
+import { BaseComponent } from './BaseComponent';
+import { expect } from '../../common/helpers/pw';
 
-export class ViewArticlePage extends BasePage {
-  articleId;
-
+export class BaseArticleContentBlock extends BaseComponent {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
   }
 
   authorLinkInArticleHeader(username) {
-    return this.page.getByRole('link', { username }).first();
+    return this.page.getByRole('link', { name: username }).first();
   }
 
   tagListItem(tagName) {
-    return this.page.getByRole('listitem').filter({ hasText: tagName });
+    return this.page
+      .getByRole('listitem')
+      .filter({ hasText: new RegExp(`^${tagName}$`) });
   }
 
   async assertArticleTitleIsVisible(title) {

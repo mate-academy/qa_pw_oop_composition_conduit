@@ -9,3 +9,7 @@ export function capitalize(str) {
 export function camelCaseToPhrase(str) {
   return str.replace(/([A-Z])/g, ' $1');
 }
+
+export function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}

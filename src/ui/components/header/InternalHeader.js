@@ -6,12 +6,14 @@ export class InternalHeader extends BaseHeader {
 
   constructor(page, userId = 0) {
     super(page, userId);
-    this.#newArticleLink = this.page.getByRole('link', { name: 'New Article' });
-    this.#settingsLink = this.page.getByRole('link', { name: 'Sign in' });
+    this.#newArticleLink = this._navbar.getByRole('link', {
+      name: 'New Article',
+    });
+    this.#settingsLink = this._navbar.getByRole('link', { name: 'Settings' });
   }
 
   #profileLink(profileId) {
-    return this.page.getByRole('link', { name: profileId });
+    return this._navbar.getByRole('link', { name: profileId });
   }
 
   async clickNewArticleLink() {

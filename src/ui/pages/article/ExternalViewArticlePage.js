@@ -1,0 +1,12 @@
+import { BaseViewArticlePage } from '../article/BaseViewArticlePage';
+import { ExternalHeader } from '../../components/header/ExternalHeader';
+
+export class ExternalViewArticlePage extends BaseViewArticlePage {
+  articleId;
+
+  constructor(page, userId = 0) {
+    super(page, userId);
+
+    this.header = new ExternalHeader(page, userId);
+  }
+}

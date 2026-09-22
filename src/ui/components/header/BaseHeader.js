@@ -6,8 +6,11 @@ export class BaseHeader extends BaseComponent {
 
   constructor(page, userId = 0) {
     super(page, userId);
-    this.#conduitLogo = this.page.getByRole('link', { name: 'Conduit' });
-    this.#homeLink = this.page.getByRole('link', { name: 'Home' });
+    // Scoped to the navbar: an anonymous article page also carries a
+    // 'Sign in or sign up to add comments' prompt with the same link names.
+    this._navbar = this.page.getByRole('navigation');
+    this.#conduitLogo = this._navbar.getByRole('link', { name: 'Conduit' });
+    this.#homeLink = this._navbar.getByRole('link', { name: 'Home' });
   }
 
   async clickConduitLogo() {

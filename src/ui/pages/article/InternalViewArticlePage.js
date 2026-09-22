@@ -1,4 +1,4 @@
-import { BaseViewArticlePage } from '../article/BaseViewArticlePage';
+import { BaseViewArticlePage } from './BaseViewArticlePage';
 import { AuthorArticleContentBlock } from '../../components/article/AuthorArticleContentBlock';
 
 export class InternalViewArticlePage extends BaseViewArticlePage {

@@ -1,4 +1,4 @@
-import { BaseViewArticlePage } from '../article/BaseViewArticlePage';
+import { BaseViewArticlePage } from './BaseViewArticlePage';
 import { ExternalHeader } from '../../components/header/ExternalHeader';
 
 export class ExternalViewArticlePage extends BaseViewArticlePage {

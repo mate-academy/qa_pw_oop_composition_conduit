@@ -1,35 +1,36 @@
-import { expect } from '../../../common/helpers/pw';
-import { BasePage } from '../BasePage';
+import { expect } from '../../common/helpers/pw';
+import { AuthorsArticleContentBlock } from './AuthorsArticleContentBlock';
+import { BaseArticleContentBlock } from './BaseArticleContentBlock';
 
-export class ViewArticlePage extends BasePage {
-  articleId;
-
+export class ArticleContentBlock extends BaseArticleContentBlock {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
-  }
-
-  authorLinkInArticleHeader(username) {
-    return this.page.getByRole('link', { username }).first();
+    this.authorsArticleContentBlock = new AuthorsArticleContentBlock(
+      page,
+      userId,
+    );
   }
 
   tagListItem(tagName) {
     return this.page.getByRole('listitem').filter({ hasText: tagName });
   }
 
-  async assertArticleTitleIsVisible(title) {
-    await this.step(`Assert the article has correct title`, async () => {
-      await expect(this.articleTitleHeader).toContainText(title);
-    });
-  }
-
   async assertArticleAuthorNameIsVisible(username) {
     await this.step(
       `Assert the article has correct author username`,
       async () => {
-        await expect(this.authorLinkInArticleHeader(username)).toBeVisible();
+        await expect(
+          this.authorsArticleContentBlock.authorLinkInArticleHeader(username),
+        ).toBeVisible();
       },
     );
+  }
+
+  async assertArticleTitleIsVisible(title) {
+    await this.step(`Assert the article has correct title`, async () => {
+      await expect(this.articleTitleHeader).toContainText(title);
+    });
   }
 
   async assertArticleTextIsVisible(text) {

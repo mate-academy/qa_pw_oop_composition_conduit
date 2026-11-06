@@ -16,4 +16,8 @@ export class YourFeedTab extends BaseComponent {
       await expect(this.#yourFeedLink).toBeVisible();
     });
   }
+
+  async openArticle(articleTitle) {
+    await this.articleFeedItem.openArticle(articleTitle);
+  }
 }

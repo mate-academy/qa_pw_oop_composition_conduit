@@ -22,4 +22,20 @@ export class GlobalFeedTab extends BaseComponent {
       await expect(this.#globalFeedLink).toBeVisible();
     });
   }
+
+  async assertArticleVisible(articleTitle) {
+    await this.articleFeedItem.assertArticleVisible(articleTitle);
+  }
+
+  async assertFirstArticleVisible() {
+    await this.articleFeedItem.assertFirstArticleVisible();
+  }
+
+  async openArticle(articleTitle) {
+    await this.articleFeedItem.openArticle(articleTitle);
+  }
+
+  async openFirstArticle() {
+    await this.articleFeedItem.openFirstArticle();
+  }
 }

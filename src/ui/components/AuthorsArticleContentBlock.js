@@ -1,7 +1,7 @@
 import { expect } from '../../common/helpers/pw';
 import { BaseArticleContentBlock } from './BaseArticleContentBlock';
 
-export class AuthorsArticleContentBlock extends BaseArticleContentBlock {
+export class AuthorArticleContentBlock extends BaseArticleContentBlock {
   authorLinkInArticleHeader(username) {
     return this.page.getByRole('link', { username }).first();
   }
@@ -15,3 +15,5 @@ export class AuthorsArticleContentBlock extends BaseArticleContentBlock {
     );
   }
 }
+
+export { AuthorArticleContentBlock as AuthorsArticleContentBlock };

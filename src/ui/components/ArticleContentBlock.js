@@ -1,15 +1,11 @@
 import { expect } from '../../common/helpers/pw';
-import { AuthorsArticleContentBlock } from './AuthorsArticleContentBlock';
+import { AuthorArticleContentBlock } from './AuthorsArticleContentBlock';
 import { BaseArticleContentBlock } from './BaseArticleContentBlock';
 
 export class ArticleContentBlock extends BaseArticleContentBlock {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
-    this.authorsArticleContentBlock = new AuthorsArticleContentBlock(
-      page,
-      userId,
-    );
   }
 
   tagListItem(tagName) {
@@ -17,13 +13,15 @@ export class ArticleContentBlock extends BaseArticleContentBlock {
   }
 
   async assertArticleAuthorNameIsVisible(username) {
-    await this.step(
-      `Assert the article has correct author username`,
-      async () => {
-        await expect(
-          this.authorsArticleContentBlock.authorLinkInArticleHeader(username),
-        ).toBeVisible();
-      },
+    if (!this.authorArticleContentBlock) {
+      this.authorArticleContentBlock = new AuthorArticleContentBlock(
+        this.page,
+        this.userId,
+      );
+    }
+
+    await this.authorArticleContentBlock.assertArticleAuthorNameIsVisible(
+      username,
     );
   }
 

@@ -41,4 +41,10 @@ export class BasePage {
       await expect(this.page).toHaveURL(this.url());
     });
   }
+
+  async reload() {
+    await this.step(`Reload ${this._pageName()} page`, async () => {
+      await this.page.reload();
+    });
+  }
 }

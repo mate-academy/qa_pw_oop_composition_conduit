@@ -1,16 +1,14 @@
 import { expect } from '../../../common/helpers/pw';
-import { BasePage } from '../BasePage';
+import { BaseArticleContentBlock } from './BaseArticleContentBlock';
 
-export class ViewArticlePage extends BasePage {
-  articleId;
-
+export class ArticleContentBlock extends BaseArticleContentBlock {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
   }
 
   authorLinkInArticleHeader(username) {
-    return this.page.getByRole('link', { username }).first();
+    return this.page.getByRole('link', { name: username }).first();
   }
 
   tagListItem(tagName) {

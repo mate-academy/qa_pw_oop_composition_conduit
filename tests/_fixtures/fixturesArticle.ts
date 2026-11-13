@@ -3,13 +3,18 @@ import { generateNewArticleData } from '../../src/common/testData/generateNewArt
 import { CreateArticlePage } from '../../src/ui/pages/article/CreateArticlePage';
 import { InternalViewArticlePage } from '../../src/ui/pages/article/InternalViewArticlePage';
 import { ExternalViewArticlePage } from '../../src/ui/pages/article/ExternalViewArticlePage';
+import { Logger } from '../../src/common/logger/Logger';
+
+type ArticleData = { title: string; description: string; text: string; tags: string[]; url?: string };
 
 export const test = base.extend<{
-  articleWithoutTags;
-  articleWithOneTag;
-  createArticlePage;
-  internalViewArticlePage;
-  externalViewArticlePage;
+  articleWithoutTags: ArticleData;
+  articleWithOneTag: ArticleData;
+  createArticlePage: CreateArticlePage;
+  internalViewArticlePage: InternalViewArticlePage;
+  externalViewArticlePage: ExternalViewArticlePage;
+}, {
+  logger: Logger;
 }>({
   articleWithoutTags: async ({ logger }, use) => {
     const article = generateNewArticleData(logger);

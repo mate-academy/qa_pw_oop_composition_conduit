@@ -25,7 +25,7 @@ export class ArticleFeedItem extends BaseComponent {
   async assertArticleHasTag(arctileName, tagName) {
     await this.step(`Assert article has ${tagName} tag`, async () => {
       await expect(
-        this.articlePreviewLocatorByName(arctileName).locator('.tag-list'),
+        this.articlePreview.filter({ hasText: arctileName }).locator('.tag-list'),
       ).toContainText(tagName);
     });
   }

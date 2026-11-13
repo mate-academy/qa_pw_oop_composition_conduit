@@ -35,10 +35,10 @@ export class BasePage {
     return this.page.url();
   }
 
-  async assertOpened() {
+  async assertOpened(url = this._url) {
     await this.step(`Assert ${this._pageName()} page is opened`, async () => {
-      await this.page.waitForURL(this.url());
-      await expect(this.page).toHaveURL(this.url());
+      await this.page.waitForURL(url);
+      await expect(this.page).toHaveURL(url);
     });
   }
 }

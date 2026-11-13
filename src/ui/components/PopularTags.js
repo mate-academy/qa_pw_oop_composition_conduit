@@ -4,11 +4,11 @@ import { BaseComponent } from './BaseComponent';
 export class PopularTags extends BaseComponent {
   constructor(page, userId = 0) {
     super(page, userId);
-    this.popularTagSection = this.page.locator('.tag-list');
+    this.popularTagSection = this.page.locator('.sidebar .tag-list');
   }
 
   popularTagLocator(tagName) {
-    return this.popularTagSection.getByText(tagName);
+    return this.popularTagSection.getByText(tagName, { exact: true });
   }
 
   async clickTagByName(tagName) {

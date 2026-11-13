@@ -8,7 +8,7 @@ export class ArticleContentBlock extends BaseArticleContentBlock {
   }
 
   tagListItem(tagName) {
-    return this.page.getByRole('listitem').filter({ hasText: tagName });
+    return this.page.getByRole('listitem').filter({ hasText: new RegExp(`^${tagName}$`) });
   }
 
   async assertArticleTitleIsVisible(title) {

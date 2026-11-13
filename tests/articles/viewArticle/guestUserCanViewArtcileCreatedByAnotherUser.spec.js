@@ -27,4 +27,11 @@ test('Not logged in user can view the article created by other user in the Globa
   await externalHomePage.globalFeed.articleFeedItem.openArctileFromTheFeed(
     articleWithoutTags.title,
   );
+
+  await externalViewArticlePage.articleContentBlock.assertArticleTitleIsVisible(
+    articleWithoutTags.title,
+  );
+  await externalViewArticlePage.articleContentBlock.assertArticleAuthorNameIsVisible(
+    user.username,
+  );
 });

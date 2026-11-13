@@ -1,24 +1,18 @@
+import { BaseArticleContentBlock } from './BaseArticleContentBlock';
 import { expect } from '../../../common/helpers/pw';
-import { BasePage } from '../BasePage';
 
-export class ViewArticlePage extends BasePage {
-  articleId;
-
+export class ArticleContentBlock extends BaseArticleContentBlock {
   constructor(page, userId = 0) {
     super(page, userId);
     this.articleTitleHeader = page.getByRole('heading');
   }
 
-  authorLinkInArticleHeader(username) {
-    return this.page.getByRole('link', { username }).first();
-  }
-
   tagListItem(tagName) {
-    return this.page.getByRole('listitem').filter({ hasText: tagName });
+    return this.page.getByRole('listitem').filter({ hasText: new RegExp(`^${tagName}$`) });
   }
 
   async assertArticleTitleIsVisible(title) {
-    await this.step(`Assert the article has correct title`, async () => {
+    await this.step(`Assert the article has title "${title}"`, async () => {
       await expect(this.articleTitleHeader).toContainText(title);
     });
   }
@@ -44,5 +38,9 @@ export class ViewArticlePage extends BasePage {
         await expect(this.tagListItem(tags[i])).toBeVisible();
       }
     });
+  }
+
+  authorLinkInArticleHeader(username) {
+    return this.page.getByRole('link', { name: username }).first();
   }
 }
